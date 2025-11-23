@@ -1,6 +1,3 @@
-const API_BASE =
-  import.meta.env.VITE_API_BASE || "";
-
 import React, { useEffect, useMemo, useState, useCallback } from "react";
 import {
   BarChart,
@@ -264,7 +261,7 @@ function App() {
 
 
   useEffect(() => {
-    const es = new EventSource("/api/stream");
+    const es = new EventSource("${API_BASE}/api/stream");
 
     es.onmessage = (event) => {
       try {
@@ -289,14 +286,14 @@ function App() {
   useEffect(() => {
     if (!testStreamRunning) return;
 
-    const es = new EventSource("/api/stream-test");
+    const es = new EventSource("${API_BASE}/api/stream-test");
 
     es.onmessage = (ev) => {
       try {
         const data = JSON.parse(ev.data);
         handleIncomingEvent(data, "test");  // same handler you use for /api/stream
       } catch (e) {
-        console.error("Failed to parse /api/stream-test event", e);
+        console.error("Failed to parse ${API_BASE}/api/stream-test event", e);
       }
     };
 
@@ -315,7 +312,7 @@ function App() {
   // ---------- load metrics once ----------
   useEffect(() => {
     setMetricsLoading(true);
-    getJSON<Metrics>("/api/metrics")
+    getJSON<Metrics>("${API_BASE}/api/metrics")
       .then((m) => setMetrics(m))
       .catch((e) => setMetricsError(e.message))
       .finally(() => setMetricsLoading(false));
@@ -325,7 +322,7 @@ function App() {
   useEffect(() => {
     if (activeTab !== "taxonomy" || taxonomy || taxonomyLoading) return;
     setTaxonomyLoading(true);
-    getJSON<any>("/api/taxonomy")
+    getJSON<any>("${API_BASE}/api/taxonomy")
       .then(setTaxonomy)
       .catch((e) => setTaxonomyError(e.message))
       .finally(() => setTaxonomyLoading(false));
@@ -335,7 +332,7 @@ function App() {
   useEffect(() => {
     if (activeTab !== "dashboard") return;
 
-    const es = new EventSource("/api/stream");
+    const es = new EventSource("${API_BASE}/api/stream");
     es.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data) as StreamEvent;
@@ -379,7 +376,7 @@ function App() {
         account_id: form.accountId || null,
       };
       const res = await postJSON<PredictResponse>(
-        "/api/predict",
+        "${API_BASE}/api/predict",
         body
       );
       setPrediction(res);
@@ -402,7 +399,7 @@ function App() {
   const submitFeedback = async (item: HistoryItem, correctCat: string) => {
     if (!correctCat) return;
     try {
-      await fetch("/api/feedback", {
+      await fetch("${API_BASE}/api/feedback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -436,7 +433,7 @@ function App() {
     setExplaining(true);
     try {
       const res = await postJSON<{ explanation: string }>(
-        "/api/explain-metrics",
+        "${API_BASE}/api/explain-metrics",
         { metrics }
       );
       setMetricsExplanation(res.explanation);
@@ -452,7 +449,7 @@ function App() {
     setBenchError(null);
     try {
       const res = await postJSON<any>(
-        "/api/benchmark",
+        "${API_BASE}/api/benchmark",
         {}
       );
       setBenchmark(res);
@@ -467,7 +464,7 @@ function App() {
     setBiasLoading(true);
     try {
       const res = await getJSON<any>(
-        "/api/bias-report"
+        "${API_BASE}/api/bias-report"
       );
       setBiasReport(res);
     } finally {
@@ -686,7 +683,7 @@ function DashboardTab({
           title="Live stream events"
           icon={<Activity className="h-5 w-5 text-purple-500" />}
           main={liveEvents.length.toString()}
-          sub="Last 20 model events from /api/stream"
+          sub="Last 20 model events from ${API_BASE}/api/stream"
         />
       </div>
 
@@ -767,7 +764,7 @@ function DashboardTab({
             Live prediction stream
           </h3>
           <p className="text-xs text-gray-600 mb-3">
-            Connects to <code>/api/stream</code> via Server-Sent Events. Every
+            Connects to <code>${API_BASE}/api/stream</code> via Server-Sent Events. Every
             time the model is called, the event is appended here.
           </p>
           <div className="space-y-2 h-[75vh] overflow-y-auto">
