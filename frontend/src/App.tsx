@@ -261,7 +261,7 @@ function App() {
 
 
   useEffect(() => {
-    const es = new EventSource("$https://web-production-783fa.up.railway.app/api/stream");
+    const es = new EventSource("https://web-production-29c8d.up.railway.app/api/stream");
 
     es.onmessage = (event) => {
       try {
@@ -286,14 +286,14 @@ function App() {
   useEffect(() => {
     if (!testStreamRunning) return;
 
-    const es = new EventSource("$https://web-production-783fa.up.railway.app/api/stream-test");
+    const es = new EventSource("https://web-production-29c8d.up.railway.app/api/stream-test");
 
     es.onmessage = (ev) => {
       try {
         const data = JSON.parse(ev.data);
         handleIncomingEvent(data, "test");  // same handler you use for /api/stream
       } catch (e) {
-        console.error("Failed to parse $https://web-production-783fa.up.railway.app/api/stream-test event", e);
+        console.error("Failed to parse https://web-production-29c8d.up.railway.app/api/stream-test event", e);
       }
     };
 
@@ -312,7 +312,7 @@ function App() {
   // ---------- load metrics once ----------
   useEffect(() => {
     setMetricsLoading(true);
-    getJSON<Metrics>("$https://web-production-783fa.up.railway.app/api/metrics")
+    getJSON<Metrics>("https://web-production-29c8d.up.railway.app/api/metrics")
       .then((m) => setMetrics(m))
       .catch((e) => setMetricsError(e.message))
       .finally(() => setMetricsLoading(false));
@@ -322,7 +322,7 @@ function App() {
   useEffect(() => {
     if (activeTab !== "taxonomy" || taxonomy || taxonomyLoading) return;
     setTaxonomyLoading(true);
-    getJSON<any>("$https://web-production-783fa.up.railway.app/api/taxonomy")
+    getJSON<any>("https://web-production-29c8d.up.railway.app/api/taxonomy")
       .then(setTaxonomy)
       .catch((e) => setTaxonomyError(e.message))
       .finally(() => setTaxonomyLoading(false));
@@ -332,7 +332,7 @@ function App() {
   useEffect(() => {
     if (activeTab !== "dashboard") return;
 
-    const es = new EventSource("$https://web-production-783fa.up.railway.app/api/stream");
+    const es = new EventSource("https://web-production-29c8d.up.railway.app/api/stream");
     es.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data) as StreamEvent;
@@ -376,7 +376,7 @@ function App() {
         account_id: form.accountId || null,
       };
       const res = await postJSON<PredictResponse>(
-        "$https://web-production-783fa.up.railway.app/api/predict",
+        "https://web-production-29c8d.up.railway.app/api/predict",
         body
       );
       setPrediction(res);
@@ -399,7 +399,7 @@ function App() {
   const submitFeedback = async (item: HistoryItem, correctCat: string) => {
     if (!correctCat) return;
     try {
-      await fetch("$https://web-production-783fa.up.railway.app/api/feedback", {
+      await fetch("https://web-production-29c8d.up.railway.app/api/feedback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -433,7 +433,7 @@ function App() {
     setExplaining(true);
     try {
       const res = await postJSON<{ explanation: string }>(
-        "$https://web-production-783fa.up.railway.app/api/explain-metrics",
+        "https://web-production-29c8d.up.railway.app/api/explain-metrics",
         { metrics }
       );
       setMetricsExplanation(res.explanation);
@@ -449,7 +449,7 @@ function App() {
     setBenchError(null);
     try {
       const res = await postJSON<any>(
-        "$https://web-production-783fa.up.railway.app/api/benchmark",
+        "https://web-production-29c8d.up.railway.app/api/benchmark",
         {}
       );
       setBenchmark(res);
@@ -464,7 +464,7 @@ function App() {
     setBiasLoading(true);
     try {
       const res = await getJSON<any>(
-        "$https://web-production-783fa.up.railway.app/api/bias-report"
+        "https://web-production-29c8d.up.railway.app/api/bias-report"
       );
       setBiasReport(res);
     } finally {
@@ -683,7 +683,7 @@ function DashboardTab({
           title="Live stream events"
           icon={<Activity className="h-5 w-5 text-purple-500" />}
           main={liveEvents.length.toString()}
-          sub="Last 20 model events from $https://web-production-783fa.up.railway.app/api/stream"
+          sub="Last 20 model events from https://web-production-29c8d.up.railway.app/api/stream"
         />
       </div>
 
@@ -764,7 +764,7 @@ function DashboardTab({
             Live prediction stream
           </h3>
           <p className="text-xs text-gray-600 mb-3">
-            Connects to <code>$https://web-production-783fa.up.railway.app/api/stream</code> via Server-Sent Events. Every
+            Connects to <code>https://web-production-29c8d.up.railway.app/api/stream</code> via Server-Sent Events. Every
             time the model is called, the event is appended here.
           </p>
           <div className="space-y-2 h-[75vh] overflow-y-auto">
