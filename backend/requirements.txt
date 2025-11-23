@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+sentence-transformers
+xgboost==2.0.3
+scikit-learn
+numpy
+pydantic
+python-dotenv
+google-generativeai
+sentence-transformers
+pandas

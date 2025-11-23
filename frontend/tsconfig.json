@@ -1,0 +1,13 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": false
+  }
+}

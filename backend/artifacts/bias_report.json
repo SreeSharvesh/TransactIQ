@@ -1,0 +1,46 @@
+{
+  "accuracy_by_country": {
+    "AUSTRALIA": 0.049,
+    "CANADA": 0.038,
+    "INDIA": 0.07,
+    "UK": 0.053,
+    "USA": 0.042
+  },
+  "accuracy_by_merchant": {},
+  "accuracy_by_amount_bucket": {
+    "(9.999, 149.149]": 0.053,
+    "(149.149, 343.172]": 0.003,
+    "(343.172, 544.28]": 0.01,
+    "(544.28, 897.032]": 0.003,
+    "(897.032, 1466.985]": 0.02,
+    "(1466.985, 2101.278]": 0.02,
+    "(2101.278, 2920.365]": 0.033,
+    "(2920.365, 4391.63]": 0.08,
+    "(4391.63, 14515.339]": 0.273,
+    "(14515.339, 142657.97]": 0.007
+  },
+  "category_support_sizes": {
+    "Charity & Donations": 300,
+    "Entertainment & Recreation": 303,
+    "Financial Services": 283,
+    "Food & Dining": 299,
+    "Government & Legal": 278,
+    "Healthcare & Medical": 310,
+    "Income": 323,
+    "Shopping & Retail": 298,
+    "Transportation": 307,
+    "Utilities & Services": 299
+  },
+  "category_accuracy": {
+    "Charity & Donations": 0.0,
+    "Entertainment & Recreation": 0.0,
+    "Financial Services": 0.534,
+    "Food & Dining": 0.0,
+    "Government & Legal": 0.0,
+    "Healthcare & Medical": 0.0,
+    "Income": 0.0,
+    "Shopping & Retail": 0.0,
+    "Transportation": 0.0,
+    "Utilities & Services": 0.0
+  }
+}

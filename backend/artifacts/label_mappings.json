@@ -1,0 +1,26 @@
+{
+  "label2id": {
+    "Charity & Donations": 0,
+    "Entertainment & Recreation": 1,
+    "Financial Services": 2,
+    "Food & Dining": 3,
+    "Government & Legal": 4,
+    "Healthcare & Medical": 5,
+    "Income": 6,
+    "Shopping & Retail": 7,
+    "Transportation": 8,
+    "Utilities & Services": 9
+  },
+  "id2label": {
+    "0": "Charity & Donations",
+    "1": "Entertainment & Recreation",
+    "2": "Financial Services",
+    "3": "Food & Dining",
+    "4": "Government & Legal",
+    "5": "Healthcare & Medical",
+    "6": "Income",
+    "7": "Shopping & Retail",
+    "8": "Transportation",
+    "9": "Utilities & Services"
+  }
+}
