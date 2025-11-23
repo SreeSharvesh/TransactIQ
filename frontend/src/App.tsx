@@ -1,5 +1,5 @@
 const API_BASE =
-  import.meta.env.VITE_API_BASE || "";
+  import.meta.env.VITE_API_BASE || "https://web-production-783fa.up.railway.app";
 
 import React, { useEffect, useMemo, useState, useCallback } from "react";
 import {
