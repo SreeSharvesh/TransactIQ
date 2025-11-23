@@ -1,6 +1,6 @@
 const API_BASE =
   import.meta.env.PROD
-    ? "https://web-production-29c8d.up.railway.app/"
+    ? "https://web-production-29c8d.up.railway.app"
     : "http://localhost:8000";
 
 import React, { useEffect, useMemo, useState, useCallback } from "react";
