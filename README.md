@@ -84,7 +84,7 @@ uvicorn app:app --host 0.0.0.0 --port 8000
 3. Add a new category entry with 3-5 representative transaction strings.
 4. The system will automatically compute the new prototype centroids on the next reload.
 
-Example taxonomy.json:
+Example category from categories.json:
 ```
 {
       "id": 0,
