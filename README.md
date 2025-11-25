@@ -1,17 +1,19 @@
 # TransactIQ: Hybrid Financial Transaction Categorisation Engine
 
+Demo Video Link: https://youtu.be/ln53uMxFwi4?si=TnTcA0-EczA9dS7Y
+
 TransactIQ is an autonomous, high-fidelity classification system designed to convert unstructured financial transaction strings into structured categories.
 
 Unlike traditional solutions that rely on expensive external APIs or rigid keyword matching, TransactIQ employs a Hybrid Inference Engine. It fuses the semantic understanding of Transformer-based embeddings (MiniLM) with the speed of XGBoost and the plasticity of Prototype-based learning. This ensures sub-millisecond latency, data privacy, and the ability to extend the taxonomy without model retraining.
 
-## 🔗 Models & Data
+## Models & Data
 
 **Model:** [Model in HF](https://huggingface.co/sreesharvesh/transactiq-hybrid)
 
 **Dataset:** [Dataset in HF](https://huggingface.co/datasets/sreesharvesh/transactiq-enriched)
 
 
-## 🚀 Key Features
+## Key Features
 
 **Hybrid Architecture:** Combines sentence-transformers for feature extraction with a dual-head classification layer (XGBoost + Cosine Similarity).
 
@@ -43,6 +45,10 @@ The system processes raw transaction strings through a multi-stage pipeline:
 
 ![Model Architecture](./frontend/src/assets/Model_Architecture_Diagram.png)
 
+## System Flow
+
+![System Flow](./frontend/src/assets/System_Flow_Diagram.png)
+
 
 ## Setup
 
@@ -71,7 +77,7 @@ uvicorn app:app --host 0.0.0.0 --port 8000
 ```
 
 
-## ⚙️ Configuration & Taxonomy
+## Configuration & Taxonomy
 
 1. TransactIQ allows for dynamic taxonomy updates. You do not need to retrain the neural networks to add a category.
 2. Navigate to config/taxonomy.json.
@@ -81,18 +87,14 @@ uvicorn app:app --host 0.0.0.0 --port 8000
 Example taxonomy.json:
 ```
 {
-  "Subscription Services": {
-    "prototypes": [
-      "NETFLIX.COM",
-      "Spotify Premium",
-      "APPLE SERVICE"
-    ],
-    "risk_level": "Low"
-  }
-}
+      "id": 0,
+      "name": "Food & Dining",
+      "description": "Restaurants, groceries, fast food, coffee shops, food delivery",
+      "keywords": ["restaurant", "food", "grocery", "coffee", "dining", "meal", "cafe", "pizza", "burger", "starbucks", "mcdonald", "kfc", "subway", "domino", "delivery", "takeout", "supermarket", "tesco", "coles", "big bazaar", "swiggy", "zomato", "uber eats", "doordash", "grocery shopping", "restaurant dinner", "coffee shop", "lunch", "dinner", "breakfast", "snack", "grocery", "groceries"]
+    }
 ```
 
-## 📊 Evaluation Metrics
+## Evaluation Metrics
 
 The following table summarises the performance of the hybrid XGBoost + Embeddings + Prototype Classification model on the 4.5M real dataset and the 75k synthetic noisy dataset.
 
@@ -103,7 +105,3 @@ The following table summarises the performance of the hybrid XGBoost + Embedding
 | **Throughput** | ~300 tx/sec | CPU |
 | **Bias Disparity (Merchant Buckets)** | <5 percent | Low category skew |
 | **Bias Disparity (Amount Ranges)** | <3 percent | No significant bias |
-
-## 🎥 Demo Video
-
-Demo Video Link: https://youtu.be/ln53uMxFwi4?si=TnTcA0-EczA9dS7Y
