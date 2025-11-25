@@ -29,7 +29,7 @@ Unlike traditional solutions that rely on expensive external APIs or rigid keywo
 
 The system processes raw transaction strings through a multi-stage pipeline:
 
-****Preprocessing:** Regex-based cleaning and PII anonymization.
+**Preprocessing:** Regex-based cleaning and PII anonymization.
 
 **Embedding:** MiniLM-L6-v2 converts text to 384-dimensional dense vectors.
 
