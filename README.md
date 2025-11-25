@@ -103,6 +103,4 @@ The following table summarises the performance of the hybrid XGBoost + Embedding
 
 ## 🎥 Demo Video
 
-[![TransactIQ Demo Video](https://img.youtube.com/vi/ln53uMxFwi4/0.jpg)](https://youtu.be/v=ln53uMxFwi4)
-
 Demo Video Link: https://youtu.be/ln53uMxFwi4?si=TnTcA0-EczA9dS7Y
