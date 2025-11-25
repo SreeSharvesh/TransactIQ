@@ -4,6 +4,13 @@ TransactIQ is an autonomous, high-fidelity classification system designed to con
 
 Unlike traditional solutions that rely on expensive external APIs or rigid keyword matching, TransactIQ employs a Hybrid Inference Engine. It fuses the semantic understanding of Transformer-based embeddings (MiniLM) with the speed of XGBoost and the plasticity of Prototype-based learning. This ensures sub-millisecond latency, data privacy, and the ability to extend the taxonomy without model retraining.
 
+## 🔗 Models & Data
+
+**Model:** [Model in HF](https://huggingface.co/sreesharvesh/transactiq-hybrid)
+
+**Dataset:** [Dataset in HF](https://huggingface.co/datasets/sreesharvesh/transactiq-enriched)
+
+
 ## 🚀 Key Features
 
 **Hybrid Architecture:** Combines sentence-transformers for feature extraction with a dual-head classification layer (XGBoost + Cosine Similarity).
@@ -32,13 +39,9 @@ The system processes raw transaction strings through a multi-stage pipeline:
 
 **Routing:** A deterministic confidence layer merges predictions and assigns risk tiers.
 
+## 🧠 Model Architecture
 
-## 🔗 Models & Data
-
-**Embedding Model:** [Model in HF](https://huggingface.co/sreesharvesh/transactiq-hybrid)
-
-**Dataset:** [Dataset in HF](https://huggingface.co/datasets/sreesharvesh/transactiq-enriched)
-
+![Model Architecture](./frontend/src/assets/Model_Architecture_Diagram.png)
 
 
 ## Setup
