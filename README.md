@@ -1,6 +1,6 @@
 # TransactIQ: Hybrid Financial Transaction Categorisation Engine
 
-Demo Video Link: https://youtu.be/ln53uMxFwi4?si=TnTcA0-EczA9dS7Y
+**Demo Video Link:** https://youtu.be/ln53uMxFwi4?si=TnTcA0-EczA9dS7Y
 
 TransactIQ is an autonomous, high-fidelity classification system designed to convert unstructured financial transaction strings into structured categories.
 
